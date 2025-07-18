@@ -1,3 +1,18 @@
+# Silicon Sampling — Project Overview
+
+**Purpose.** This mini‑repository implement the method of *silicon sampling*: enlisting large language models (LLMs) as high‑throughput, low‑cost “silicon participants” whose aggregated answers approximate the statistical patterns of human subjects.  
+
+The bundled example reproduces an **awe‑induction experiment**: two prompt conditions ask the LLM to recall either an awe‑inspiring experience (**Awe**) or an ordinary recent activity (**Control**). Multiple independent completions are harvested, treated as a synthetic sample, and later analyzed to test whether the **depth of reflection** differs between conditions.  
+
+The workflow shows how to  
+1. issue batched, parallel API calls with `template_siliconsampling.py`;  
+2. log every response to a growing `.jsonl` file;  
+3. run `template_analysis.py` to compute descriptive statistics, a Welch *t*‑test, and a Bayes Factor for the experimental effect.  
+
+Use this scaffold as a drop‑in blueprint for any between‑condition design in which the outcome can be inferred from free‑text completions.
+
+---
+
 # Silicon‑Sampling Quick‑Start Guide
 
 

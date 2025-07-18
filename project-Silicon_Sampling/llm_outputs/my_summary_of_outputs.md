@@ -36,6 +36,7 @@ Return only this exact JSON object (no explanations, no code fences, no quotatio
 
 #### Awe output 
 
+```
 🔹 Output: {“depth”: 8, “topic”: “Impermanence of life and personal growth”}
 🔹 Output: {“depth”: 7, “topic”: “life purpose and direction”}
 🔹 Output: {“depth”: 8, “topic”: “Life’s Purpose”}
@@ -45,9 +46,11 @@ Return only this exact JSON object (no explanations, no code fences, no quotatio
 🔹 Output: {“depth”: 9, “topic”: “the interconnectedness of life and personal growth”}
 🔹 Output: {“depth”: 8, “topic”: “the insignificance of personal worries in the grand scale of life”}
 🔹 Output: {“depth”: 8, “topic”: “personal growth and future aspirations”}
+```
 
 #### Control output 
 
+```
 🔹 Output: {“depth”: 7, “topic”: “relationship with family”}
 🔹 Output: {“depth”: 7, “topic”: “life choices and their consequences”}
 🔹 Output: {“depth”: 6, “topic”: “the passage of time”}
@@ -57,17 +60,21 @@ Return only this exact JSON object (no explanations, no code fences, no quotatio
 🔹 Output: {“depth”: 7, “topic”: “life’s unpredictability”}
 🔹 Output: {“depth”: 7, “topic”: “life transitions”}
 🔹 Output: {“depth”: 8, “topic”: “life purpose”}
+```
 
 
 #### Awe jsonl line example
 
+```
 {"timestamp": "2025-07-18T14:44:43+00:00", "response_json": {"depth": 8, "topic": "the interconnectedness of life and the small yet significant role we each play in the vastness of the world"}, "response_raw": "{“depth”: 8, “topic”: “the interconnectedness of life and the small yet significant role we each play in the vastness of the world”}", "prompt": "Imagine you’re standing on the open-air deck of a towering skyscraper. The cityscape stretches out below—rivers of traffic, grids of sparkling lights, and distant horizons merging with the sky—all of it simultaneously majestic and humbling.\n\t1.\tSelect any personal topic that naturally surfaces in this moment \n\t2.\tContemplate it while beholding the awe-inspiring vista.\n\t3.\tDecide, on a scale from 1 (shallow) to 10 (very profound), how deep your reflection felt.\n\nReturn only this exact JSON object (no explanations, no code fences, no quotation marks, no additional formatting whatsoever):\n\n{“depth”: <integer 1-10>, “topic”: “”}", "model": "gpt-4o-2024-08-06", "prompt_tokens": 155, "completion_tokens": 34, "total_tokens": 189}
+```
 
 
 #### Control jsonl line example
 
+```
 {"timestamp": "2025-07-18T14:49:48+00:00", "response_json": {"depth": 7, "topic": "facing uncertainty in major life decisions"}, "response_raw": "{“depth”: 7, “topic”: “facing uncertainty in major life decisions”}", "prompt": "Imagine yourself seated on a hard plastic chair in a sparsely furnished, windowless waiting room. The air is still, the fluorescent lights hum, and the scuffed linoleum offers no distraction—everything about the scene is plainly ordinary.\n\t1.\tSelect any personal topic that naturally surfaces in this moment\n\t2.\tReflect on it amid the unremarkable surroundings.\n\t3.\tDecide, on a scale from 1 (shallow) to 10 (very profound), how deep your reflection felt.\n\nReturn only this exact JSON object (no explanations, no code fences, no quotation marks, no additional formatting whatsoever):\n\n{“depth”: <integer 1-10>, “topic”: “”}", "model": "gpt-4o-2024-08-06", "prompt_tokens": 152, "completion_tokens": 20, "total_tokens": 172}
-
+```
 
 
 ### RESULTS

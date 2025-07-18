@@ -9,19 +9,22 @@
 Create (or verify) the following directory tree inside your project root:
 
 ```
-py_LLM_translations/
-├── .env                      # **NOT** committed; stores your API keys
-├── .gitignore                # must include `.env`
-├── .requirements.txt         # bash: pip install -r requirements.txt
-├── llm_prompts/              # prompt text files
-│   ├── prompt_1.txt
-│   └── prompt_2.txt
-├── llm_outputs/              # JSONL logs grow here
-│   ├── output_memory_1.jsonl
-│   └── output_memory_2.jsonl
-└── llm_scripts/              # Python scripts
-    ├── template_siliconsampling.py
-    └── template_analysis.py
+project-LLMs/
+├── .env                                    # **NOT** committed; stores your API keys
+├── .gitignore                              # must include `.env`
+├── requirements.txt                        # bash: pip install -r requirements.txt
+└── project-Silicon_Sampling/
+    ├── README_silicon_sampling.md
+    ├── llm_prompts/                        #  prompt text files
+    │   ├── prompt_1.txt
+    │   └── prompt_2.txt
+    ├── llm_outputs/                        # JSONL logs grow here
+    │   ├── output_memory_1.jsonl
+    │   └── output_memory_2.jsonl
+    └── llm_scripts/                        # Python scripts
+        ├── functions_parallel_calls.py 
+        ├── template_siliconsampling.py
+        └── template_analysis.py
 ```
 
 * Place your OpenAI (or other provider) credentials in **`.env`**, e.g.  

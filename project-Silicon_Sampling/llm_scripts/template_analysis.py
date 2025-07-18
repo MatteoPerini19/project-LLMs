@@ -24,19 +24,19 @@ from scipy.stats import t as _t_dist
 # ──────────────────────────────────────────────────────────────
 # Configuration
 # ──────────────────────────────────────────────────────────────
-FILE_A = Path("llm_outputs/output_memory_1.jsonl")       # Condition A
-FILE_B = Path("llm_outputs/output_memory_2.jsonl")       # Condition B
+FILE_A = Path("project-Silicon_Sampling/llm_outputs/output_memory_1.jsonl")       # Condition A
+FILE_B = Path("project-Silicon_Sampling/llm_outputs/output_memory_2.jsonl")       # Condition B
 SLOT_INDEX = 0                                           # which numeric slot to extract (0 = first number found)
 
 KEY_NAME = "depth"                                       # numeric key in response_json dict
 CONDITION_A_NAME = "Control"                             # human‑readable label for A
 CONDITION_B_NAME = "Treatment"                           # human‑readable label for B
 PLOT_TITLE = "Distributions of Depth Scores"
-FIG_PATH = Path("llm_outputs/analysis_depth_distributions.png")
+FIG_PATH = Path("project-Silicon_Sampling/llm_outputs/analysis_depth_distributions.png")
 
 # Optional output: 
 PRINT_RAW_VALUES = False                                            # Toggle to display the raw lists
-CSV_PATH = Path("llm_outputs/data-silicon_sampling_values.csv")     # CSV output file
+CSV_PATH = Path("project-Silicon_Sampling/llm_outputs/data-silicon_sampling_values.csv")     # CSV output file
 WRITE_CSV = False                                                   # toggle CSV export
 
 

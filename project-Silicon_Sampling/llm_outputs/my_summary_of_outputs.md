@@ -83,21 +83,28 @@ Return only this exact JSON object (no explanations, no code fences, no quotatio
 #### Awe results 
 
 🔸 Mean depth:      8.10
+
 🔸 SD   depth:      0.46
+
 🔸 N:               1000
 
 
 #### Control results 
 
 🔸 Mean depth:      6.87
+
 🔸 SD   depth:      0.51
+
 🔸 N:               1000
 
 #### Mean difference
 
 Mean difference:    1.230
+
 Mean sd: 			0.485
+
 Cohen's *d*:        2.533
+
 *p* value:			4.8 × 10^-699
 
 

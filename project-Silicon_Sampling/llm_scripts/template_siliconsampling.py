@@ -25,10 +25,10 @@ load_dotenv(ROOT_DIR / ".env", override=True)
 # ──────────────────────────────────────────────────────────────
 # Configuration
 # ──────────────────────────────────────────────────────────────
-PROMPT_PATH = Path("project-Silicon_Sampling/llm_prompts/prompt_1.txt")           # prompt file
-OUTPUT_PATH = Path("project-Silicon_Sampling/llm_outputs/output_memory_1.jsonl")  # where results are stored
-MODEL = "openai/gpt-4o"   
-NUM_CALLS = 5
+PROMPT_PATH = Path("project-Silicon_Sampling/llm_prompts/prompt_2.txt")           # prompt file
+OUTPUT_PATH = Path("project-Silicon_Sampling/llm_outputs/output_memory_2.jsonl")  # where results are stored
+MODEL = "gemini/gemini-2.5-flash"   # gemini/gemini-2.5-flash   # openai/gpt-4o
+NUM_CALLS = 100
 CONCURRENCY = 15              # simultaneous in‑flight requests
 MAX_TOKENS = None             # leave None for model default
 
@@ -39,6 +39,8 @@ MAX_TOKENS = None             # leave None for model default
 import os, sys
 if not os.getenv("OPENAI_API_KEY"):
     sys.exit("❌ OPENAI_API_KEY missing — check .env or shell variables.")
+if not os.getenv("GEMINI_API_KEY"):
+    sys.exit("❌ GEMINI_API_KEY missing — check .env or shell variables.")
 
 # ──────────────────────────────────────────────────────────────
 # Load prompt

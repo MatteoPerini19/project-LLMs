@@ -6,27 +6,30 @@
 
 #### Awe prompt 
 
+```
 Imagine you’re standing on the open-air deck of a towering skyscraper. The cityscape stretches out below—rivers of traffic, grids of sparkling lights, and distant horizons merging with the sky—all of it simultaneously majestic and humbling.
-	1.	Select any personal topic that naturally surfaces in this moment 
+
+	1.	Select any personal topic that naturally surfaces in this moment.
 	2.	Contemplate it while beholding the awe-inspiring vista.
 	3.	Decide, on a scale from 1 (shallow) to 10 (very profound), how deep your reflection felt.
 
 Return only this exact JSON object (no explanations, no code fences, no quotation marks, no additional formatting whatsoever):
 
 {“depth”: <integer 1-10>, “topic”: “”}
-
+```
 
 #### Control prompt 
 
+```
 Imagine yourself seated on a hard plastic chair in a sparsely furnished, windowless waiting room. The air is still, the fluorescent lights hum, and the scuffed linoleum offers no distraction—everything about the scene is plainly ordinary.
-	1.	Select any personal topic that naturally surfaces in this moment
+	1.	Select any personal topic that naturally surfaces in this moment.
 	2.	Reflect on it amid the unremarkable surroundings.
 	3.	Decide, on a scale from 1 (shallow) to 10 (very profound), how deep your reflection felt.
 
 Return only this exact JSON object (no explanations, no code fences, no quotation marks, no additional formatting whatsoever):
 
 {“depth”: <integer 1-10>, “topic”: “”}
-
+```
 
 
 ### EXAMPLE OUTPUT 

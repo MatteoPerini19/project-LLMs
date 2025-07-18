@@ -99,18 +99,18 @@ Return only this exact JSON object (no explanations, no code fences, no quotatio
 
 #### Mean difference
 
-Mean difference:    1.230
+🟩 Mean difference:    	1.230
 
-Mean sd: 			0.485
+🟩 Mean sd: 			0.485
 
-Cohen's *d*:        2.533
+🟩 Cohen's *d*:        	2.533
 
-*p* value:			4.8 × 10^-699
+🟩 *p* value:			4.8 × 10^-699
 
 
 #### Bayesian Analysis
 
-**Bayes Factor (BF₁₀)**: 3.5 × 10^415
+🟩 Bayes Factor (BF₁₀): 3.5 × 10^415
 
 *Calculation method*: The Bayes Factor was computed under the standard Jeffreys–Zellner–Siow (JZS) prior on the standardized effect size (Cauchy scale *r* = 0.707) using the Bayesian Information Criterion (BIC) approximation (Wagenmakers, 2007). For the two‑sample *t*‑test comparing Awe (M = 8.10, SD = 0.46, N = 1 000) and Control (M = 6.87, SD = 0.51, N = 1 000) conditions we obtained:
 

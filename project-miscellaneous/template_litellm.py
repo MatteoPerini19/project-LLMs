@@ -11,6 +11,14 @@ from typing import Any
 from rich import print as rprint
 from rich.pretty import Pretty
 
+
+from pathlib import Path
+from dotenv import load_dotenv
+
+ROOT = Path(__file__).resolve().parents[2]   # …/project-LLMs
+load_dotenv(ROOT / ".env")                   # ← guarantees the key is loaded
+
+
 # ---------- Helper: sanitize and isolate JSON payload ---------- #
 def _extract_json_payload(text: str) -> str:
     """
@@ -37,7 +45,6 @@ def _extract_json_payload(text: str) -> str:
 
 
 
-load_dotenv()  # loads variables from .env 
 
 
 # COMANDI DA RICORDARE: 

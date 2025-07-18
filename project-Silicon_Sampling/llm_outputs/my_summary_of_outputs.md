@@ -105,17 +105,3 @@ Cohen's *d*:        2.533
 BF₁₀ = exp(ΔBIC / 2) ≈ 3.5 × 10^415.
 
 This Bayes Factor provides overwhelming evidence that the Awe condition produces deeper reflections than the Control condition.
-
-
-
-
-
-
-
-Second, create another script where we RUN THE FUNCTIONS. Again, take part of the template_litellm.py script (where you have "### 🟣🟣🟣 Template parallel llm calls 🟣🟣🟣"). 
-(note: my scripts now are all in /Users/matteoperini/Documents/AAA_Radboud/AAA_Studies_and_Data/Programming2025/py_LLM_translations/llm_scripts)
-
-Third, let's create a script where we ANALYSE THE JSONL outputs. 
-The two outputs are intended to correspond to two different EXPERIMENTAL CONDITIONS. 
-Let's compute the means, stdev, and sample size (as already in the script), but also include code to run a t-test between them, to obtain p values and BFs. 
-Also include other standard descriptive statistics, and a bar charts with the frequency of all the responses from min to max values (divided by condition). 

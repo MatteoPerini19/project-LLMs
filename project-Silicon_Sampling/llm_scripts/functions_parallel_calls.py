@@ -1,5 +1,3 @@
-
-
 """
 functions_parallel_calls.py
 ───────────────────────────

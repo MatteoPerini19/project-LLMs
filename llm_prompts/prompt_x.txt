@@ -1,0 +1,10 @@
+How good is icecream from 1 a 10? And how confident are you about this?
+Rate how good ice cream is on a scale from 1 to 10 and state your confidence (0 – 100 %).
+
+Return **only** this exact JSON object, nothing else (without triple backticks, code fences, or additional formatting):
+
+
+{
+  "score": <integer 1‑10>,
+  "confidence": <integer 0‑100>
+}

@@ -37,8 +37,8 @@ project-LLMs/
 
 ## 1. Prepare Your Two Prompts
 
-* **Control** – baseline condition: `llm_prompts/prompt_1.txt`
-* **Treatment** – experimental condition: `llm_prompts/prompt_2.txt`
+* **Control** – baseline condition: `project-Silicon_Sampling/llm_prompts/prompt_1.txt`
+* **Treatment** – experimental condition: `project-Silicon_Sampling/llm_prompts/prompt_2.txt`
 
 Keep the prompts identical except for the manipulation you wish to test. 
 
@@ -49,8 +49,8 @@ Keep the prompts identical except for the manipulation you wish to test.
 Open the script and inspect the **Configuration** block:
 
 ```python
-PROMPT_PATH  = Path("llm_prompts/prompt_1.txt")   # choose the prompt file
-OUTPUT_PATH  = Path("llm_outputs/output_memory_1.jsonl")  # choose an output file
+PROMPT_PATH  = Path("project-Silicon_Sampling/llm_prompts/prompt_1.txt")   # choose the prompt file
+OUTPUT_PATH  = Path("project-Silicon_Sampling/llm_outputs/output_memory_1.jsonl")  # choose an output file
 MODEL        = "openai/gpt-4o"
 NUM_CALLS    = 25     # parallel completions per run
 CONCURRENCY  = 15     # in‑flight requests
@@ -68,7 +68,7 @@ MAX_TOKENS   = None   # leave None for model default
 From your virtual‑env shell run:
 
 ```bash
-python llm_scripts/template_siliconsampling.py
+python project-Silicon_Sampling/llm_scripts/template_siliconsampling.py
 ```
 
 Each run appends **NUM_CALLS** new records to the JSONL and prints the cumulative count. Launch the script again and again until the file shows the desired number of observations.
@@ -93,8 +93,8 @@ Make sure "response_json" has a valid json object as value.
 Edit `template_analysis.py` in the **Configuration** block:
 
 ```python
-FILE_A = Path("llm_outputs/output_control.jsonl")
-FILE_B = Path("llm_outputs/output_treatment.jsonl")
+FILE_A = Path("project-Silicon_Sampling/llm_outputs/output_control.jsonl")
+FILE_B = Path("project-Silicon_Sampling/llm_outputs/output_treatment.jsonl")
 CONDITION_A_NAME = "Control"
 CONDITION_B_NAME = "Treatment"
 ```
@@ -102,7 +102,7 @@ CONDITION_B_NAME = "Treatment"
 Then run:
 
 ```bash
-python llm_scripts/template_analysis.py
+python project-Silicon_Sampling/llm_scripts/template_analysis.py
 ```
 
 The script will print descriptive statistics, a Welch *t*‑test with two‑tailed *p*, a BIC‑based Bayes Factor, and save:

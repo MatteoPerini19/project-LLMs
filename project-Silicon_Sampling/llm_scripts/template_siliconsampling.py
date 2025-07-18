@@ -19,8 +19,8 @@ from functions_parallel_calls import asynch_completion, _extract_json_payload
 # ──────────────────────────────────────────────────────────────
 # Configuration
 # ──────────────────────────────────────────────────────────────
-PROMPT_PATH = Path("llm_prompts/prompt_3.txt")           # prompt file
-OUTPUT_PATH = Path("llm_outputs/output_memory_3.jsonl")  # where results are stored
+PROMPT_PATH = Path("project-Silicon_Sampling/llm_prompts/prompt_3.txt")           # prompt file
+OUTPUT_PATH = Path("project-Silicon_Sampling/llm_outputs/output_memory_3.jsonl")  # where results are stored
 MODEL = "openai/gpt-4o"
 NUM_CALLS = 25
 CONCURRENCY = 15              # simultaneous in‑flight requests

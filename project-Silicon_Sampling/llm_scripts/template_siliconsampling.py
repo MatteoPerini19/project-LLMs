@@ -20,15 +20,20 @@ from functions_parallel_calls import asynch_completion, _extract_json_payload
 # import litellm; litellm._turn_on_debug()   # turns on litellm debugging mode 
 
 ROOT_DIR = Path(__file__).resolve().parents[2]   # …/project-LLMs
+PROMPTS_DIR = ROOT_DIR / "project-Silicon_Sampling" / "llm_prompts"
+OUTPUT_DIR  = ROOT_DIR / "project-Silicon_Sampling" / "llm_outputs"
 load_dotenv(ROOT_DIR / ".env", override=True)
 
 # ──────────────────────────────────────────────────────────────
 # Configuration
 # ──────────────────────────────────────────────────────────────
-PROMPT_PATH = Path("project-Silicon_Sampling/llm_prompts/prompt_2.txt")           # prompt file
-OUTPUT_PATH = Path("project-Silicon_Sampling/llm_outputs/output_memory_2.jsonl")  # where results are stored
+SUFFIX = "_2"          # managed by llm_orchestrator.py
+
+PROMPT_PATH = PROMPTS_DIR / f"prompt{SUFFIX}.txt"           # prompt file
+OUTPUT_PATH = OUTPUT_DIR / f"output_memory{SUFFIX}.jsonl"  # where results are stored
+
 MODEL = "gemini/gemini-2.5-flash"   # gemini/gemini-2.5-flash   # openai/gpt-4o
-NUM_CALLS = 100
+NUM_CALLS = 60
 CONCURRENCY = 15              # simultaneous in‑flight requests
 MAX_TOKENS = None             # leave None for model default
 
@@ -106,6 +111,9 @@ print(f"\n\n✔ Done. Results appended to {OUTPUT_PATH}")
 # ──────────────────────────────────────────────────────────────
 # Quick summary: number of records in the JSONL file
 # ──────────────────────────────────────────────────────────────
+
+print(PROMPT_PATH)
+
 try:
     with OUTPUT_PATH.open("r", encoding="utf-8") as _f:
         line_count = sum(1 for _ in _f if _.strip())

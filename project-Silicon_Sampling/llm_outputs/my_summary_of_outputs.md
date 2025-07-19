@@ -119,3 +119,29 @@ Return only this exact JSON object (no explanations, no code fences, no quotatio
 BF₁₀ = exp(ΔBIC / 2) ≈ 3.5 × 10^415.
 
 This Bayes Factor provides overwhelming evidence that the Awe condition produces deeper reflections than the Control condition.
+
+
+
+### Roboustness check with Gemini 2.5 flash 
+
+=== Descriptive statistics ===
+Control (output_memory_1.jsonl) – n=1000
+  Mean=7.814e+00  SD=6.275e-01  Median=8.000e+00  Min=5.000e+00  Max=9.000e+00
+Treatment (output_memory_2.jsonl) – n=1000
+  Mean=8.850e+00  SD=3.790e-01  Median=9.000e+00  Min=8.000e+00  Max=1.000e+01
+
+=== Inferential statistics ===
+Welch t(1642.2) = -44.688
+
+Two‑tailed p-value = < 1 × 10⁻³⁰⁸
+Note: The exact p-value is smaller than the minimum positive number representable in double‑precision (≈ 1 × 10⁻³⁰⁸). Report it as p < 1 × 10⁻³⁰⁸.
+
+Bayes Factor BF₁₀  >  1.0e308  (double‑precision limit)
+log10(BF₁₀) ≈ 345.6   [BIC approximation]
+Interpretation: log10(BF₁₀) above ~2 is considered ‘decisive’; a value near 300 represents overwhelming evidence for the alternative model. In a manuscript, report for example:
+
+Welch’s t-test indicated a substantial difference between conditions, t(1642.2) = -44.69, p < .001. The BIC-approximated Bayes factor exceeded the double-precision limit (BF₁₀ > 1 × 10³⁰⁸), corresponding to log₁₀ BF₁₀ ≈ 345.6, and therefore provides overwhelming evidence for the alternative hypothesis (cf. Kass & Raftery, 1995).
+
+Cohen's d = 1.999e+00
+95% CI for Cohen's d: [1.891e+00, 2.106e+00]
+99% CI for Cohen's d: [1.857e+00, 2.140e+00]

@@ -17,6 +17,9 @@ import csv
 from collections import Counter
 from pathlib import Path
 
+ROOT_DIR = Path(__file__).resolve().parents[2]   # …/project-LLMs
+OUTPUT_DIR = ROOT_DIR / "project-Silicon_Sampling" / "llm_outputs"
+
 import matplotlib.pyplot as plt
 from matplotlib.ticker import MaxNLocator
 from scipy.stats import t as _t_dist
@@ -24,19 +27,19 @@ from scipy.stats import t as _t_dist
 # ──────────────────────────────────────────────────────────────
 # Configuration
 # ──────────────────────────────────────────────────────────────
-FILE_A = Path("project-Silicon_Sampling/llm_outputs/output_memory_1.jsonl")       # Condition A
-FILE_B = Path("project-Silicon_Sampling/llm_outputs/output_memory_2.jsonl")       # Condition B
+FILE_A = OUTPUT_DIR / "output_memory_1.jsonl"       # Condition A
+FILE_B = OUTPUT_DIR / "output_memory_2.jsonl"       # Condition B
 SLOT_INDEX = 0                                           # which numeric slot to extract (0 = first number found)
 
 KEY_NAME = "depth"                                       # numeric key in response_json dict
 CONDITION_A_NAME = "Control"                             # human‑readable label for A
 CONDITION_B_NAME = "Treatment"                           # human‑readable label for B
-PLOT_TITLE = "Distributions of Depth Scores"
-FIG_PATH = Path("project-Silicon_Sampling/llm_outputs/analysis_depth_distributions.png")
+PLOT_TITLE = "Distributions of Silicon Sampling Scores"
+FIG_PATH = OUTPUT_DIR / "analysis_silicon_sampling_distributions.png"
 
 # Optional output: 
 PRINT_RAW_VALUES = False                                            # Toggle to display the raw lists
-CSV_PATH = Path("project-Silicon_Sampling/llm_outputs/data-silicon_sampling_values.csv")     # CSV output file
+CSV_PATH = OUTPUT_DIR / "data-silicon_sampling_values.csv"     # CSV output file
 WRITE_CSV = False                                                   # toggle CSV export
 
 
@@ -147,7 +150,62 @@ def _bic_bayes_factor(t_stat: float, df: float, n_total: int) -> float:
     ΔBIC = n * ln(1 + t²/df) ;  BF₁₀ = exp(ΔBIC / 2).
     """
     delta_bic = n_total * math.log1p(t_stat**2 / df)
-    return math.exp(delta_bic / 2.0)
+    log_bf = delta_bic / 2.0          # natural‑log Bayes factor
+
+    # Avoid overflow: math.exp(x) overflows for x ≳ 709.
+    if log_bf > 700:
+        return float("inf")
+    return math.exp(log_bf)
+
+
+def _cohen_d(mean_a: float, mean_b: float, sd_a: float, sd_b: float, n_a: int, n_b: int) -> float:
+    """
+    Compute Cohen’s d for two independent samples.
+
+    Uses the pooled (unbiased) standard deviation:
+    SD_pooled = sqrt( ((n_a‑1)*sd_a² + (n_b‑1)*sd_b²) / (n_a + n_b – 2) )
+    Returns signed *d* (positive if B > A).
+    """
+    pooled_sd = math.sqrt(((n_a - 1) * sd_a ** 2 + (n_b - 1) * sd_b ** 2) / (n_a + n_b - 2))
+    return (mean_b - mean_a) / pooled_sd if pooled_sd else float("nan")
+
+def _ci_cohen_d(d: float, n_a: int, n_b: int, confidence: float = 0.95) -> tuple[float, float]:
+    """
+    Return a confidence interval for Cohen's d using the Hedges & Olkin (1985)
+    normal‑approximation standard error:
+
+        SE_d = sqrt( (n_a + n_b) / (n_a * n_b) + d² / (2 * (n_a + n_b - 2)) )
+
+    The CI is d ± z_crit · SE_d, where z_crit is the two‑tailed normal
+    critical value (e.g., 1.96 for 95 %, 2.58 for 99 %).
+    """
+    se_d = math.sqrt((n_a + n_b) / (n_a * n_b) + (d ** 2) / (2 * (n_a + n_b - 2)))
+    alpha = 1.0 - confidence
+    z_crit = _t_dist.ppf(1 - alpha / 2, df=float("inf"))  # ≈ normal
+    margin = z_crit * se_d
+    return d - margin, d + margin
+
+
+def _confidence_interval(
+    mean_a: float,
+    mean_b: float,
+    sd_a: float,
+    sd_b: float,
+    n_a: int,
+    n_b: int,
+    df: float,
+    confidence: float = 0.95,
+) -> tuple[float, float]:
+    """
+    Return the CI for the *difference of means* (B − A) at the requested confidence level
+    using Welch's SE and the corresponding df.
+    """
+    se = math.sqrt(sd_a**2 / n_a + sd_b**2 / n_b)
+    alpha = 1.0 - confidence
+    tcrit = _t_dist.ppf(1 - alpha / 2, df)
+    diff = mean_b - mean_a
+    margin = tcrit * se
+    return diff - margin, diff + margin
 
 
 # ──────────────────────────────────────────────────────────────
@@ -179,12 +237,21 @@ min_b, max_b, med_b = min(vals_b), max(vals_b), statistics.median(vals_b)
 # Welch t‑test & Bayes Factor
 t_stat, df, p_val = _welch_t(mean_a, mean_b, sd_a, sd_b, n_a, n_b)
 bf10 = _bic_bayes_factor(t_stat, df, n_a + n_b)
+delta_bic = (n_a + n_b) * math.log1p(t_stat**2 / df)
+log10_bf  = delta_bic / (2 * math.log(10))    # base‑10 Bayes factor
+cohen_d = _cohen_d(mean_a, mean_b, sd_a, sd_b, n_a, n_b)
+ci_d_95 = _ci_cohen_d(cohen_d, n_a, n_b, confidence=0.95)
+ci_d_99 = _ci_cohen_d(cohen_d, n_a, n_b, confidence=0.99)
 
 # ──────────────────────────────────────────────────────────────
 # Report
 # ──────────────────────────────────────────────────────────────
 def _fmt(x: float) -> str:
-    return "nan" if math.isnan(x) else f"{x:.3f}"
+    if math.isnan(x):
+        return "nan"
+    if math.isinf(x):
+        return "inf"
+    return f"{x:.3e}"
 
 
 print("\n=== Descriptive statistics ===")
@@ -196,8 +263,34 @@ print(f"  Mean={_fmt(mean_b)}  SD={_fmt(sd_b)}  Median={_fmt(med_b)}  Min={_fmt(
 
 print("\n=== Inferential statistics ===")
 print(f"Welch t({df:.1f}) = {t_stat:.3f}")
-print(f"Two‑tailed p-value = {p_val:.3e}")
-print(f"Bayes Factor BF₁₀ ≈ {bf10:.3e}")
+# Format p‑value; underflow (0.0) is shown as < 1 × 10⁻³⁰⁸
+p_text = f"{p_val:.3e}" if p_val > 0 else "< 1 × 10⁻³⁰⁸"
+print(f"\nTwo‑tailed p-value = {p_text}")
+if p_val == 0.0:
+    print("Note: The exact p-value is smaller than the minimum positive number "
+          "representable in double‑precision (≈ 1 × 10⁻³⁰⁸). Report it as "
+          "p < 1 × 10⁻³⁰⁸.")
+if math.isinf(bf10):
+    print(f"\nBayes Factor BF₁₀  >  1.0e308  (double‑precision limit)")
+    print(f"log10(BF₁₀) ≈ {log10_bf:.1f}   [BIC approximation]")
+    print("Interpretation: log10(BF₁₀) above ~2 is considered ‘decisive’; "
+          "a value near 300 represents overwhelming evidence for the "
+          "alternative model. In a manuscript, report for example:\n")
+    manuscript_sentence = (
+        f"Welch’s t-test indicated a substantial difference between conditions, "
+        f"t({df:.1f}) = {t_stat:.2f}, p < .001. "
+        f"The BIC-approximated Bayes factor exceeded the double-precision limit "
+        f"(BF₁₀ > 1 × 10³⁰⁸), corresponding to log₁₀ BF₁₀ ≈ {log10_bf:.1f}, and "
+        f"therefore provides overwhelming evidence for the alternative hypothesis "
+        f"(cf. Kass & Raftery, 1995)."
+    )
+    print(manuscript_sentence)
+else:
+    print(f"Bayes Factor BF₁₀ ≈ {_fmt(bf10)}  "
+          f"(log10 BF₁₀ = {log10_bf:.1f})")
+print(f"\nCohen's d = {_fmt(cohen_d)}")
+print(f"95% CI for Cohen's d: [{_fmt(ci_d_95[0])}, {_fmt(ci_d_95[1])}]")
+print(f"99% CI for Cohen's d: [{_fmt(ci_d_99[0])}, {_fmt(ci_d_99[1])}]")
 
 # ──────────────────────────────────────────────────────────────
 # Visualisation

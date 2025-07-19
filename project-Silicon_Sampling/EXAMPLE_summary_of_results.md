@@ -126,24 +126,24 @@ This Bayes Factor provides overwhelming evidence that the Awe condition produces
 
 #### Descriptive statistics
 
-Control (output_memory_1.jsonl) – n=1000
+🔸 Control (output_memory_1.jsonl) – n=1000
 
   Mean=7.814e+00  SD=6.275e-01  Median=8.000e+00  Min=5.000e+00  Max=9.000e+00
 
-Treatment (output_memory_2.jsonl) – n=1000
+🔸 Treatment (output_memory_2.jsonl) – n=1000
 
   Mean=8.850e+00  SD=3.790e-01  Median=9.000e+00  Min=8.000e+00  Max=1.000e+01
 
 
 #### Inferential statistics
 
-Welch t(1642.2) = -44.688
+🟩 Welch t(1642.2) = -44.688
 
-Two‑tailed p-value = < 1 × 10⁻³⁰⁸
+🟩 Two‑tailed p-value = < 1 × 10⁻³⁰⁸
 
 Note: The exact p-value is smaller than the minimum positive number representable in double‑precision (≈ 1 × 10⁻³⁰⁸). Report it as p < 1 × 10⁻³⁰⁸.
 
-Bayes Factor BF₁₀  >  1.0e308  (double‑precision limit)
+🟩 Bayes Factor BF₁₀  >  1.0e308  (double‑precision limit)
 
 log10(BF₁₀) ≈ 345.6   [BIC approximation]
 
@@ -155,6 +155,8 @@ Welch’s t-test indicated a substantial difference between conditions, t(1642.2
 
 #### Effect size 
 
-Cohen's d = 1.999e+00
+🟩 Cohen's d = 1.999e+00
+
 95% CI for Cohen's d: [1.891e+00, 2.106e+00]
+
 99% CI for Cohen's d: [1.857e+00, 2.140e+00]

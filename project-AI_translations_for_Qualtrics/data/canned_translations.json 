@@ -1,0 +1,186 @@
+{
+  "Strongly disagree": {
+    "it": "Fortemente in disaccordo",
+    "pt-br": "Discordo totalmente",
+    "tr": "Kesinlikle katılmıyorum",
+    "es-es": "Totalmente en desacuerdo",
+    "sv": "Håller helt inte med",
+    "nl": "Helemaal mee oneens"
+  },
+  "Disagree": {
+    "it": "In disaccordo",
+    "pt-br": "Discordo",
+    "tr": "Katılmıyorum",
+    "es-es": "En desacuerdo",
+    "sv": "Håller inte med",
+    "nl": "Mee oneens"
+  },
+  "Somewhat disagree": {
+    "it": "",
+    "pt-br": "",
+    "tr": "",
+    "es-es": "",
+    "sv": "",
+    "nl": ""
+  },
+  "Neither agree nor disagree": {
+    "it": "Né d’accordo né in disaccordo",
+    "pt-br": "Nem concordo nem discordo",
+    "tr": "Ne katılıyorum ne de katılmıyorum",
+    "es-es": "Ni de acuerdo ni en desacuerdo",
+    "sv": "Varken eller",
+    "nl": "Niet mee eens, niet mee oneens"
+  },
+  "Agree": {
+    "it": "D’accordo",
+    "pt-br": "Concordo",
+    "tr": "Katılıyorum",
+    "es-es": "De acuerdo",
+    "sv": "Håller med",
+    "nl": "Mee eens"
+  },
+  "Somewhat agree": {
+    "it": "",
+    "pt-br": "",
+    "tr": "",
+    "es-es": "",
+    "sv": "",
+    "nl": ""
+  },
+  "Strongly agree": {
+    "it": "Fortemente d’accordo",
+    "pt-br": "Concordo totalmente",
+    "tr": "Tamamen katılıyorum",
+    "es-es": "Totalmente de acuerdo",
+    "sv": "Håller helt med",
+    "nl": "Helemaal mee eens"
+  },
+  "0": {
+    "it": "0",
+    "pt-br": "0",
+    "tr": "0",
+    "es-es": "0",
+    "sv": "0",
+    "nl": "0"
+  },
+  "1": {
+    "it": "1",
+    "pt-br": "1",
+    "tr": "1",
+    "es-es": "1",
+    "sv": "1",
+    "nl": "1"
+  },
+  "2": {
+    "it": "2",
+    "pt-br": "2",
+    "tr": "2",
+    "es-es": "2",
+    "sv": "2",
+    "nl": "2"
+  },
+  "3": {
+    "it": "3",
+    "pt-br": "3",
+    "tr": "3",
+    "es-es": "3",
+    "sv": "3",
+    "nl": "3"
+  },
+  "4": {
+    "it": "4",
+    "pt-br": "4",
+    "tr": "4",
+    "es-es": "4",
+    "sv": "4",
+    "nl": "4"
+  },
+  "5": {
+    "it": "5",
+    "pt-br": "5",
+    "tr": "5",
+    "es-es": "5",
+    "sv": "5",
+    "nl": "5"
+  },
+  "6": {
+    "it": "6",
+    "pt-br": "6",
+    "tr": "6",
+    "es-es": "6",
+    "sv": "6",
+    "nl": "6"
+  },
+  "7": {
+    "it": "7",
+    "pt-br": "7",
+    "tr": "7",
+    "es-es": "7",
+    "sv": "7",
+    "nl": "7"
+  },
+  "8": {
+    "it": "8",
+    "pt-br": "8",
+    "tr": "8",
+    "es-es": "8",
+    "sv": "8",
+    "nl": "8"
+  },
+  "9": {
+    "it": "9",
+    "pt-br": "9",
+    "tr": "9",
+    "es-es": "9",
+    "sv": "9",
+    "nl": "9"
+  },
+  "10": {
+    "it": "10",
+    "pt-br": "10",
+    "tr": "10",
+    "es-es": "10",
+    "sv": "10",
+    "nl": "10"
+  },
+  "0. Not at all": {
+    "it": "",
+    "pt-br": "",
+    "tr": "",
+    "es-es": "",
+    "sv": "",
+    "nl": ""
+  },
+  "0. Not important at all": {
+    "it": "",
+    "pt-br": "",
+    "tr": "",
+    "es-es": "",
+    "sv": "",
+    "nl": ""
+  },
+  "6. Very much": {
+    "it": "",
+    "pt-br": "",
+    "tr": "",
+    "es-es": "",
+    "sv": "",
+    "nl": ""
+  },
+  "6. Extremely important": {
+    "it": "",
+    "pt-br": "",
+    "tr": "",
+    "es-es": "",
+    "sv": "",
+    "nl": ""
+  },
+  "EXPRESSION": {
+    "it": "",
+    "pt-br": "",
+    "tr": "",
+    "es-es": "",
+    "sv": "",
+    "nl": ""
+  }
+}

@@ -3,3 +3,5 @@
 .DS_Store
 __pycache__/
 *.py[cod]
+TODO.md
+SHC_qualtrics_translations.xlsx

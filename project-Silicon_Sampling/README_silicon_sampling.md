@@ -24,6 +24,7 @@ Create (or verify) the following directory tree inside your project root:
 
 ```
 project-LLMs/
+├── .venv
 ├── .env                                    # **NOT** committed; stores your API keys
 ├── .gitignore                              # must include `.env`
 ├── requirements.txt                        # bash: pip install -r requirements.txt

@@ -25,6 +25,12 @@ live in ``config.py`` so the orchestrator stays slim.
  """
 
 from __future__ import annotations
+from pathlib import Path
+from dotenv import load_dotenv
+
+# Load .env from project root before anything else (override any existing vars)
+ROOT_DIR = Path(__file__).resolve().parents[2]  # …/project-LLMs
+load_dotenv(ROOT_DIR / ".env", override=True)
 
 import argparse
 import json
@@ -52,6 +58,10 @@ from config import (  # noqa: E402
     PROMPT_TEMPLATE_PATH,
     DEFAULT_LANGS,
 )
+try:
+    from config import EN_COL  # noqa: E402
+except ImportError:
+    EN_COL = "EN"
 from canned_loader import load_canned_dict  # noqa: E402
 from litellm_client import call_llm  # noqa: E402
 from translation_memory import load_cache, update_cache, lookup_exact  # noqa: E402
@@ -168,6 +178,12 @@ def main(argv: List[str] | None = None):
               f"Default: {','.join(DEFAULT_LANGS)}"),
     )
     parser.add_argument(
+        "--en-col",
+        type=str,
+        default=EN_COL,
+        help='Column name that contains the English source text (default "EN").',
+    )
+    parser.add_argument(
         "--batch-size",
         type=int,
         default=BATCH_SIZE,
@@ -203,6 +219,11 @@ def main(argv: List[str] | None = None):
     # Load resources
     # ------------------------------------------------------------------- #
     df = pd.read_csv(args.input, dtype=str).fillna("")
+    if args.en_col not in df.columns:
+        parser.error(
+            f"Column '{args.en_col}' not found in CSV. "
+            f"Available columns: {', '.join(df.columns)}"
+        )
     build_cell_ids(df)
     canned = load_canned_dict(CANNED_DICT_PATH)
     cache = load_cache(CACHE_PATH)
@@ -233,14 +254,12 @@ def main(argv: List[str] | None = None):
         ):
             batch_idx = row_idxs[start:stop]
             sub_df = df.loc[batch_idx]
-
-            cid_to_en = dict(zip(sub_df["cell_id"], sub_df["en"]))
+            cid_to_en = dict(zip(sub_df["cell_id"], sub_df[args.en_col]))
 
             # Collector: cid -> translated text
             ready_translations = {}
-
             # Step 1: canned dictionary
-            for cid, eng in zip(sub_df["cell_id"], sub_df["en"]):
+            for cid, eng in zip(sub_df["cell_id"], sub_df[args.en_col]):
                 if eng in canned and lang in canned[eng]:
                     ready_translations[cid] = canned[eng][lang]
 
@@ -255,7 +274,7 @@ def main(argv: List[str] | None = None):
             # Step 3: remaining items -> LLM
             remaining_items = [
                 (cid, eng)
-                for cid, eng in zip(sub_df["cell_id"], sub_df["en"])
+                for cid, eng in zip(sub_df["cell_id"], sub_df[args.en_col])
                 if cid not in ready_translations and not detect_image_only(eng)
             ]
 
@@ -301,3 +320,8 @@ def main(argv: List[str] | None = None):
 
 if __name__ == "__main__":
     main()
+
+
+
+
+print("---Orchestrator script executed---")

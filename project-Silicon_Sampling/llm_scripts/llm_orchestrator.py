@@ -17,7 +17,7 @@ from pathlib import Path
 # ──────────────────────────────────────────────────────────────
 # Configuration
 # ──────────────────────────────────────────────────────────────
-N_LINES_TARGET = 1000        # desired number of rows in output_memory_1.jsonl
+N_LINES_TARGET = 101        # desired number of rows in output_memory_1.jsonl
 
 ROOT_DIR   = Path(__file__).resolve().parents[2]        # …/project-LLMs
 SCRIPTS_DIR = ROOT_DIR / "project-Silicon_Sampling" / "llm_scripts"

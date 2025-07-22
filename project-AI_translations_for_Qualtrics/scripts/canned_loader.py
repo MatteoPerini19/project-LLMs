@@ -145,3 +145,7 @@ def get_canned(
     """
     key = normalize_text(english) if normalize else english
     return table.get(key, {}).get(lang)
+
+
+
+print("---Canned loader script executed---")

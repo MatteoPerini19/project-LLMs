@@ -71,7 +71,24 @@ def normalize_whitespace(text: str) -> str:
     return _WHITESPACE_RE.sub(" ", text).strip()
 
 
+
 _IMG_ONLY_RE = re.compile(r"^\s*<img\b[^>]*>\s*$", re.IGNORECASE | re.DOTALL)
+
+
+# --------------------------------------------------------------------------- #
+# Helper to auto-escape unescaped double quotes in JSON-like strings
+# --------------------------------------------------------------------------- #
+
+def escape_unescaped_quotes(s: str) -> str:
+    """
+    Auto-escape any unescaped double quotes inside JSON-like strings
+    (e.g., values with internal quotes), so that JSON parsing succeeds.
+    """
+    return re.sub(
+        r'(:\s*")([^"]*?)(")',
+        lambda m: m.group(1) + m.group(2).replace('"', '\\"') + m.group(3),
+        s,
+    )
 
 
 def detect_image_only(text: str) -> bool:
@@ -155,6 +172,55 @@ def get_timestamp() -> str:
     )
 
 
+# --------------------------------------------------------------------------- #
+# JSON payload extractor
+# --------------------------------------------------------------------------- #
+
+
+def extract_json_payload(text: str) -> str:
+    """
+    Isolate the JSON portion of *text* so that ``json.loads`` succeeds even
+    if the model wrapped the object in ```json fences or sprinkled curly
+    quotes.
+
+    Parameters
+    ----------
+    text : str
+        Raw LLM output that should contain a JSON object.
+
+    Returns
+    -------
+    str
+        Clean string starting with '{' and ending with '}' (best effort).
+    """
+    import re
+
+    t = text.strip()
+
+    # Remove ```json ... ``` fences
+    if t.startswith("```"):
+        m = re.match(r"```(?:json)?\s*(.*?)\s*```", t, flags=re.DOTALL)
+        if m:
+            t = m.group(1).strip()
+
+    # Trim leading / trailing garbage before first { and after last }
+    start, end = t.find("{"), t.rfind("}")
+    if start != -1 and end != -1:
+        t = t[start : end + 1]
+
+    # Replace curly quotes with straight ones
+    return (
+        t.replace("“", '"')
+        .replace("”", '"')
+        .replace("‘", "'")
+        .replace("’", "'")
+    )
+
+
+# --------------------------------------------------------------------------- #
+# Update exported names
+# --------------------------------------------------------------------------- #
+
 __all__ = [
     "safe_mkdirs",
     "sanitize_json_dict",
@@ -162,4 +228,10 @@ __all__ = [
     "detect_image_only",
     "rapidfuzz_ratio",
     "get_timestamp",
+    "extract_json_payload",
+    "escape_unescaped_quotes",
 ]
+
+
+
+print("---Utils script executed---")

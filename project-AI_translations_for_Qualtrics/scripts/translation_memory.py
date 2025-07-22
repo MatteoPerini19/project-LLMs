@@ -178,3 +178,6 @@ __all__ = [
     "lookup_exact",
     "find_near_duplicates",
 ]
+
+
+print("---Memory script executed---")

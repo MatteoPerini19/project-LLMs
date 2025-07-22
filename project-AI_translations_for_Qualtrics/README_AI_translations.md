@@ -71,7 +71,7 @@ Path constants	    Change folder layout if you must
 
 All constants can also be overridden via environment variables, e.g.:
 export BATCH_SIZE=20
-export OPENAI_MODEL=gpt-4o
+export MODEL_NAME=gemini/gemini-2.5-pro
 
 Outputs land under project-AI_translations_for_Qualtrics/outputs/. 
 

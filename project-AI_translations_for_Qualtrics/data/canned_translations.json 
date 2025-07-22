@@ -1,11 +1,11 @@
 {
   "Strongly disagree": {
-    "it": "Fortemente in disaccordo",
+    "it": "Totalmente in disaccordo",
     "pt-br": "Discordo totalmente",
-    "tr": "Kesinlikle katılmıyorum",
+    "tr": "Tamamen katılmıyorum",
     "es-es": "Totalmente en desacuerdo",
-    "sv": "Håller helt inte med",
-    "nl": "Helemaal mee oneens"
+    "sv": "Håller inte alls med",
+    "nl": "Helemaal oneens"
   },
   "Disagree": {
     "it": "In disaccordo",
@@ -13,23 +13,31 @@
     "tr": "Katılmıyorum",
     "es-es": "En desacuerdo",
     "sv": "Håller inte med",
-    "nl": "Mee oneens"
+    "nl": "Oneens"
   },
   "Somewhat disagree": {
-    "it": "",
-    "pt-br": "",
-    "tr": "",
-    "es-es": "",
-    "sv": "",
-    "nl": ""
+    "it": "Leggermente in disaccordo",
+    "pt-br": "Discordo parcialmente",
+    "tr": "Kısmen katılmıyorum",
+    "es-es": "Algo en desacuerdo",
+    "sv": "Håller inte riktigt med",
+    "nl": "Eerder oneens"
   },
   "Neither agree nor disagree": {
     "it": "Né d’accordo né in disaccordo",
     "pt-br": "Nem concordo nem discordo",
-    "tr": "Ne katılıyorum ne de katılmıyorum",
+    "tr": "Ne katılıyorum ne katılmıyorum",
     "es-es": "Ni de acuerdo ni en desacuerdo",
-    "sv": "Varken eller",
-    "nl": "Niet mee eens, niet mee oneens"
+    "sv": "Varken håller med eller håller inte med",
+    "nl": "Evenveel mee eens als oneens"
+  },
+  "Somewhat agree": {
+    "it": "Leggermente d’accordo",
+    "pt-br": "Concordo parcialmente",
+    "tr": "Kısmen katılıyorum",
+    "es-es": "Algo de acuerdo",
+    "sv": "Håller med lite grann",
+    "nl": "Eerder eens"
   },
   "Agree": {
     "it": "D’accordo",
@@ -37,23 +45,15 @@
     "tr": "Katılıyorum",
     "es-es": "De acuerdo",
     "sv": "Håller med",
-    "nl": "Mee eens"
-  },
-  "Somewhat agree": {
-    "it": "",
-    "pt-br": "",
-    "tr": "",
-    "es-es": "",
-    "sv": "",
-    "nl": ""
+    "nl": "Eens"
   },
   "Strongly agree": {
-    "it": "Fortemente d’accordo",
+    "it": "Totalmente d’accordo",
     "pt-br": "Concordo totalmente",
     "tr": "Tamamen katılıyorum",
     "es-es": "Totalmente de acuerdo",
-    "sv": "Håller helt med",
-    "nl": "Helemaal mee eens"
+    "sv": "Håller med fullständigt",
+    "nl": "Helemaal eens"
   },
   "0": {
     "it": "0",
@@ -144,43 +144,75 @@
     "nl": "10"
   },
   "0. Not at all": {
-    "it": "",
-    "pt-br": "",
-    "tr": "",
-    "es-es": "",
-    "sv": "",
-    "nl": ""
-  },
+    "it": "0. Per nulla",
+    "pt-br": "0. Nem um pouco",
+    "tr": "0. Hiç",
+    "es-es": "0. En absoluto",
+    "sv": "0. Inte alls",
+    "nl": "0. Helemaal niet"
+    },
   "0. Not important at all": {
-    "it": "",
-    "pt-br": "",
-    "tr": "",
-    "es-es": "",
-    "sv": "",
-    "nl": ""
-  },
+    "it": "0. Per nulla importante",
+    "pt-br": "0. Nada importante",
+    "tr": "0. Hiç önemli değil",
+    "es-es": "0. Nada importante",
+    "sv": "0. Inte alls viktigt",
+    "nl": "0. Helemaal niet belangrijk"
+    },
   "6. Very much": {
-    "it": "",
-    "pt-br": "",
-    "tr": "",
-    "es-es": "",
-    "sv": "",
-    "nl": ""
-  },
+    "it": "6. Moltissimo",
+    "pt-br": "6. Muitíssimo",
+    "tr": "6. Çok fazla",
+    "es-es": "6. Muchísimo",
+    "sv": "6. Väldigt mycket",
+    "nl": "6. Heel erg"
+    },
   "6. Extremely important": {
+    "it": "6. Estremamente importante",
+    "pt-br": "6. Extremamente importante",
+    "tr": "6. Son derece önemli",
+    "es-es": "6. Extremadamente importante",
+    "sv": "6. Extremt viktigt",
+    "nl": "6. Uiterst belangrijk"
+    },
+  "Appealing": {
     "it": "",
     "pt-br": "",
-    "tr": "",
+    "tr": "Çekici",
     "es-es": "",
     "sv": "",
     "nl": ""
-  },
-  "EXPRESSION": {
+    },
+  "Clean/hygienic": {
     "it": "",
     "pt-br": "",
-    "tr": "",
+    "tr": "Temiz/hijyenik",
     "es-es": "",
     "sv": "",
     "nl": ""
-  }
+    },
+  "I would feel comfortable wearing it, even knowing someone else has worn it": {
+    "it": "",
+    "pt-br": "",
+    "tr": "Bir başkasının giymiş olduğunu bilsem bile onu giymekten rahat hissederdim",
+    "es-es": "",
+    "sv": "",
+    "nl": ""
+    },
+  "I would like to have it, even knowing someone else has worn it": {
+    "it": "",
+    "pt-br": "",
+    "tr": "Bir başkasının giymiş olduğunu bilsem bile onu sahip olmak isterdim",
+    "es-es": "",
+    "sv": "",
+    "nl": ""
+    },
+  "Percentage price (%)": {
+    "it": "",
+    "pt-br": "",
+    "tr": "Yüzde fiyatı (%)",
+    "es-es": "",
+    "sv": "",
+    "nl": ""
+    }
 }

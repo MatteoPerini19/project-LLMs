@@ -27,12 +27,12 @@ load_dotenv(ROOT_DIR / ".env", override=True)
 # ──────────────────────────────────────────────────────────────
 # Configuration
 # ──────────────────────────────────────────────────────────────
-SUFFIX = "_2"          # managed by llm_orchestrator.py
+SUFFIX = "_1"          # managed by llm_orchestrator.py
 
 PROMPT_PATH = PROMPTS_DIR / f"prompt{SUFFIX}.txt"           # prompt file
 OUTPUT_PATH = OUTPUT_DIR / f"output_memory{SUFFIX}.jsonl"  # where results are stored
 
-MODEL = "gemini/gemini-2.5-flash"   # gemini/gemini-2.5-flash   # openai/gpt-4o
+MODEL = "openai/gpt-4o"   # gemini/gemini-2.5-flash   # openai/gpt-4o
 NUM_CALLS = 60
 CONCURRENCY = 15              # simultaneous in‑flight requests
 MAX_TOKENS = None             # leave None for model default

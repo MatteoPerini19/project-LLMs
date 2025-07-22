@@ -19,10 +19,9 @@ from pathlib import Path
 
 from dotenv import load_dotenv
 
-# --------------------------------------------------------------------------- #
-# Load .env early so that anything below can rely on `os.getenv()`.
-# --------------------------------------------------------------------------- #
-load_dotenv()
+# Load .env from project root before anything else
+ROOT_DIR = Path(__file__).resolve().parents[2]
+load_dotenv(ROOT_DIR / ".env", override=True)
 
 # --------------------------------------------------------------------------- #
 # Project root & canonical directories
@@ -50,7 +49,7 @@ PROMPT_TEMPLATE_PATH: Path = PROJECT_ROOT / "prompt_AI_translation_instructions.
 # --------------------------------------------------------------------------- #
 
 # Default model name; overridable via CLI or env var
-MODEL_NAME: str = os.getenv("OPENAI_MODEL", "gpt-4o")
+MODEL_NAME: str = os.getenv("MODEL_NAME", "openai/gpt-4o")
 
 # Default items per single LLM prompt; can be tuned via CLI or env var
 BATCH_SIZE: int = int(os.getenv("BATCH_SIZE", "10"))
@@ -64,8 +63,24 @@ TEMPERATURE: float = float(os.getenv("TEMPERATURE", "0"))
 # Maximum retry attempts for a single LiteLLM request
 MAX_RETRIES: int = int(os.getenv("MAX_RETRIES", "4"))
 
+
+# Debug flags: print first prompt/response to stdout (0/1 or False/True)
+PRINT_FIRST_PROMPT: bool = os.getenv("PRINT_FIRST_PROMPT", "0") in {"1", "true", "True"}
+PRINT_FIRST_RESPONSE: bool = os.getenv("PRINT_FIRST_RESPONSE", "0") in {"1", "true", "True"}
+
+# Use OpenAI Responses API when talking to openai/* models (needed for sk-proj-* keys)
+USE_RESPONSES_API: bool = os.getenv("USE_RESPONSES_API", "1") in {"1", "true", "True"}
+
+# Map OPENAI_PROJECT_ID (your .env) to OPENAI_PROJECT (what SDK expects)
+if "OPENAI_PROJECT_ID" in os.environ and "OPENAI_PROJECT" not in os.environ:
+    os.environ["OPENAI_PROJECT"] = os.environ["OPENAI_PROJECT_ID"].strip()
+
+
 # Default set of target languages used when --langs is omitted
-DEFAULT_LANGS: list[str] = ["it", "pt-br", "tr", "es-es", "sv", "nl"]
+DEFAULT_LANGS: list[str] = ["IT", "PT-BR", "TR", "ES-ES", "SV", "NL"]
+
+# Column name holding the English source text in the CSV
+EN_COL: str = os.getenv("EN_COL", "EN")
 
 # --------------------------------------------------------------------------- #
 # Exportable names
@@ -85,5 +100,12 @@ __all__ = [
     "LLM_TIMEOUT",
     "TEMPERATURE",
     "MAX_RETRIES",
+    "PRINT_FIRST_PROMPT",
+    "PRINT_FIRST_RESPONSE",
+    "USE_RESPONSES_API",
     "DEFAULT_LANGS",
+    "EN_COL",
 ]
+
+
+print("---Config script executed---")

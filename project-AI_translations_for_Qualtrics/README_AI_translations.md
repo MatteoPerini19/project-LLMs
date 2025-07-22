@@ -27,7 +27,12 @@ Each batch is checkpointed to disk so you can safely resume after an interruptio
 
 ### Quick Start
 
-````
+```bash
+# 1. Clone repo and set up venv
+cd project-LLMs
+python3 -m venv .venv && source .venv/bin/activate
+pip install -r requirements.txt
+```
 
 ## Command-line Execution
 
@@ -46,34 +51,7 @@ python -m project-AI_translations_for_Qualtrics.scripts.orchestrator \
 # real run (defaults: it, pt-br, tr, es-es, sv, nl)
 python -m project-AI_translations_for_Qualtrics.scripts.orchestrator \
        --input project-AI_translations_for_Qualtrics/data/input/Qualtrics_translations.csv
-```bash
-# 1. Clone repo and set up venv
-cd project-LLMs
-python3 -m venv .venv && source .venv/bin/activate
-pip install -r requirements.txt
-
-# 2. Create .env in project root
-cat <<EOF > .env
-OPENAI_API_KEY=sk-proj-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-# Optional for Gemini:
-GEMINI_API_KEY=AIz-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-EOF
-
-# 3. Place your files
-cp my_Qualtrics_translations.csv project-AI_translations_for_Qualtrics/data/input/Qualtrics_translations.csv
-# Edit canned translations
-echo '{"Strongly agree": {"IT": "Fortemente d’accordo"}}' > project-AI_translations_for_Qualtrics/data/canned_translations.json
-
-# 4. Customize prompt instructions
-# - Include a Study Summary (<~1k tokens)
-# - Add a section: "### Glossary of *Critical* Terms and Phrases as Intended in the Survey (keep in mind when choosing the best translation)"
-vim project-AI_translations_for_Qualtrics/prompt_AI_translation_instructions.txt
-
-# 5. Run orchestrator
-python -m project-AI_translations_for_Qualtrics.scripts.orchestrator \
-  --langs IT,PT-BR,TR,ES-ES,SV,NL \
-  --batch-size 10
-````
+```
 
 At completion, the translated CSV is at `outputs/translated_csv/Qualtrics_translations_filled.csv`.
 

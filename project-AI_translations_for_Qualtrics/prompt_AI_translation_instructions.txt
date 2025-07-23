@@ -76,6 +76,7 @@ The JSON object should have exactly this structure:
 IMPORTANT:
 – Preserve all HTML tags (e.g., bold) and Qualtrics piped-text (e.g. {{e://Field/var}}) that you find the original language, keeping an equivalent position in the translated text.
 – Keep sentence boundaries and placeholders unchanged.  
+– Always use the informal second-person pronoun in the target language for any participant-facing text or instructions.
 - The texts to translate provided below are generally in sequential order, even if they can belong to different blocks.
 – Your goal is to choose a translation that maximise *psychological equivalence* with the original, which is necessary to allow comparing the survey answers across languages.
 – Escape all internal double quotes within translated string values as \" so that the returned JSON remains valid.

@@ -52,7 +52,7 @@ PROMPT_TEMPLATE_PATH: Path = PROJECT_ROOT / "prompt_AI_translation_instructions.
 MODEL_NAME: str = os.getenv("MODEL_NAME", "openai/gpt-4o")
 
 # Default items per single LLM prompt; can be tuned via CLI or env var
-BATCH_SIZE: int = int(os.getenv("BATCH_SIZE", "10"))
+BATCH_SIZE: int = int(os.getenv("BATCH_SIZE", "5"))
 
 # Timeout (seconds) for each LiteLLM request
 LLM_TIMEOUT: int = int(os.getenv("LLM_TIMEOUT", "120"))
@@ -61,7 +61,7 @@ LLM_TIMEOUT: int = int(os.getenv("LLM_TIMEOUT", "120"))
 TEMPERATURE: float = float(os.getenv("TEMPERATURE", "0"))
 
 # Maximum retry attempts for a single LiteLLM request
-MAX_RETRIES: int = int(os.getenv("MAX_RETRIES", "4"))
+MAX_RETRIES: int = int(os.getenv("MAX_RETRIES", "5"))
 
 
 # Debug flags: print first prompt/response to stdout (0/1 or False/True)

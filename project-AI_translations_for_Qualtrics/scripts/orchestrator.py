@@ -62,7 +62,7 @@ try:
     from config import EN_COL  # noqa: E402
 except ImportError:
     EN_COL = "EN"
-from canned_loader import load_canned_dict  # noqa: E402
+from canned_loader import load_canned_dict, get_canned  # noqa: E402
 from litellm_client import call_llm  # noqa: E402
 from translation_memory import load_cache, update_cache, lookup_exact  # noqa: E402
 from utils import safe_mkdirs, sanitize_json_dict, detect_image_only  # noqa: E402
@@ -258,10 +258,11 @@ def main(argv: List[str] | None = None):
 
             # Collector: cid -> translated text
             ready_translations = {}
-            # Step 1: canned dictionary
+            # Step 1: canned dictionary (use helper)
             for cid, eng in zip(sub_df["cell_id"], sub_df[args.en_col]):
-                if eng in canned and lang in canned[eng]:
-                    ready_translations[cid] = canned[eng][lang]
+                canned_hit = get_canned(eng, lang, canned)
+                if canned_hit:
+                    ready_translations[cid] = canned_hit
 
             # Step 2: exact cache (English‑keyed)
             for cid, eng in cid_to_en.items():

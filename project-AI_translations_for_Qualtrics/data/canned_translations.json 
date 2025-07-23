@@ -2,7 +2,7 @@
   "Strongly disagree": {
     "it": "Totalmente in disaccordo",
     "pt-br": "Discordo totalmente",
-    "tr": "Tamamen katılmıyorum",
+    "tr": "Hiç katılmıyorum",
     "es-es": "Totalmente en desacuerdo",
     "sv": "Håller inte alls med",
     "nl": "Helemaal oneens"
@@ -176,43 +176,43 @@
     "nl": "6. Uiterst belangrijk"
     },
   "Appealing": {
-    "it": "",
-    "pt-br": "",
+    "it": "Attraente",
+    "pt-br": "Atraente",
     "tr": "Çekici",
-    "es-es": "",
-    "sv": "",
-    "nl": ""
+    "es-es": "Atractivo",
+    "sv": "Tilltalande",
+    "nl": "Aantrekkelijk"
     },
   "Clean/hygienic": {
-    "it": "",
-    "pt-br": "",
+    "it": "Pulito/igienico",
+    "pt-br": "Limpo/higiênico",
     "tr": "Temiz/hijyenik",
-    "es-es": "",
-    "sv": "",
-    "nl": ""
+    "es-es": "Limpio/higiénico",
+    "sv": "Ren/hygienisk",
+    "nl": "Schoon/hygiënisch"
     },
   "I would feel comfortable wearing it, even knowing someone else has worn it": {
-    "it": "",
-    "pt-br": "",
+    "it": "Mi sentirei a mio agio a indossarlo, anche sapendo che qualcun altro l'ha indossato",
+    "pt-br": "Eu me sentiria confortável em usá-la, mesmo sabendo que outra pessoa já a usou",
     "tr": "Bir başkasının giymiş olduğunu bilsem bile onu giymekten rahat hissederdim",
-    "es-es": "",
-    "sv": "",
-    "nl": ""
+    "es-es": "Me sentiría cómodo(a) usándolo, incluso sabiendo que otra persona lo ha usado",
+    "sv": "Jag skulle känna mig bekväm med att bära den, även om jag visste att någon annan hade haft den på sig",
+    "nl": "Ik zou me er prettig bij voelen om het te dragen, zelfs als ik wist dat iemand anders het al had gedragen"
     },
   "I would like to have it, even knowing someone else has worn it": {
-    "it": "",
-    "pt-br": "",
+    "it": "Mi piacerebbe averlo, anche sapendo che qualcun altro l'ha indossato",
+    "pt-br": "Eu gostaria de tê-lo, mesmo sabendo que outra pessoa já o usou",
     "tr": "Bir başkasının giymiş olduğunu bilsem bile onu sahip olmak isterdim",
-    "es-es": "",
-    "sv": "",
-    "nl": ""
+    "es-es": "Me gustaría tenerlo, incluso sabiendo que otra persona lo ha usado",
+    "sv": "Jag skulle vilja ha den, även om jag visste att någon annan hade haft den på sig",
+    "nl": "Ik zou het graag hebben, zelfs als ik wist dat iemand anders het al had gedragen"
     },
   "Percentage price (%)": {
-    "it": "",
-    "pt-br": "",
+    "it": "Prezzo in percentuale (%)",
+    "pt-br": "Preço percentual (%)",
     "tr": "Yüzde fiyatı (%)",
-    "es-es": "",
-    "sv": "",
-    "nl": ""
+    "es-es": "Precio porcentual (%)",
+    "sv": "Procentpris (%)",
+    "nl": "Percentage prijs (%)"
     }
 }

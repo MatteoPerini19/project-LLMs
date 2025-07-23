@@ -34,6 +34,20 @@ python3 -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
+## Qualtrics file preparation 
+
+You have to download the translation file as a CSV from qualtrics Translations page of the Qualtrics survey. (no need to select "Export untransalted items only", the code will not overwrite the translations already filled). 
+
+The translation file should then be renamed as `Qualtrics_translations.csv` and placed in the `input` folder (`project-LLMs/project-AI_translations_for_Qualtrics/data/input`).
+
+## Setting API keys 
+
+A `.env` should be created and located in the directory root (`project-LLMs`). The API key should be included in `.env` as follows: `OPENAI_API_KEY=sk-proj--...`. Don't share this key with anyone. The API key can be created on the website of the LLM provider. The default settings of this project use OpenAI GPT (https://platform.openai.com).
+
+## Canned translation file preparation 
+
+Edit the `canned_translations.json` (`project-LLMs/project-AI_translations_for_Qualtrics/data`) to include the ISO keys for the lanugages you need and pieces of text to be replaced with predetermined and consistent translations (e.g., "Strongly agree"). This allows for more control and consistency across the survey. 
+
 ## Command-line Execution
 
 ```bash
@@ -85,6 +99,9 @@ project-LLMs/
         ├── audit_fuzzy_matches.py
         └── utils.py
 ```
+
+
+
 
 ---
 

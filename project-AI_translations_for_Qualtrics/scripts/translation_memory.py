@@ -38,7 +38,7 @@ from typing import Dict, Iterable, List, Mapping
 from rapidfuzz import process, fuzz
 from filelock import FileLock
 
-from utils import normalize_whitespace, safe_mkdirs
+from utils import normalize_text, safe_mkdirs
 
 # --------------------------------------------------------------------------- #
 # Loader
@@ -70,7 +70,7 @@ def load_cache(path: Path) -> Dict[str, Dict[str, str]]:
                 continue
             try:
                 rec = json.loads(line)
-                en = normalize_whitespace(rec["en"])
+                en = normalize_text(rec["en"])
                 lang = rec["lang"]
                 text = rec["translation"]
             except (json.JSONDecodeError, KeyError):
@@ -115,7 +115,7 @@ def update_cache(
     with lock:  # guarantees atomic append across processes
         with path.open("a", encoding="utf-8") as fh:
             for en_text, target_text in new_block.items():
-                en_key = normalize_whitespace(en_text)
+                en_key = normalize_text(en_text)
                 # merge in‑memory
                 cache.setdefault(en_key, {})[lang] = target_text
                 # append on disk
@@ -145,7 +145,7 @@ def lookup_exact(
     """
     Return cached translation if present; else *None*.
     """
-    key = normalize_whitespace(english)
+    key = normalize_text(english)
     return cache.get(key, {}).get(lang)
 
 

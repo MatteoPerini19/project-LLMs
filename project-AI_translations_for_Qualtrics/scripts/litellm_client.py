@@ -10,7 +10,7 @@ Responsibilities
 ----------------
 • Load & sanitize API keys *before* any SDK import.
 • Route OpenAI project keys to the new /responses API (sk-proj-*).
-• Enforce JSON-only output (json_mode + response_format) and parse robustly.
+• Enforce JSON-only output via response_format and robust post‑parsing.
 • Retry on transient 429/5xx errors with exponential backoff.
 • Log every call (prompt hash, latency, token usage) to JSONL.
 • (Optional) print first prompt/response for debugging, controlled via config.
@@ -175,7 +175,6 @@ def call_llm(
                     input=prompt,
                     timeout=timeout,
                     temperature=temperature,
-                    json_mode=True,
                     response_format={"type": "json_object"},
                 )
                 # Extract text
@@ -205,7 +204,6 @@ def call_llm(
                     ],
                     timeout=timeout,
                     temperature=temperature,
-                    json_mode=True,
                     response_format={"type": "json_object"},
                 )
                 # Extract text
@@ -304,7 +302,6 @@ def call_llm(
                     ],
                     timeout=timeout,
                     temperature=0,
-                    json_mode=True,
                     response_format={"type": "json_object"},
                 )
                 repaired_text = repair_response["choices"][0]["message"]["content"].strip()
@@ -352,7 +349,4 @@ def call_llm(
 # --- One-time footer debug print (on import) ---
 _api_head = os.environ.get("OPENAI_API_KEY", "")[:15]
 print(f"[litellm_client] OPENAI_API_KEY[0:15]: '{_api_head}...'")
-if _last_prompt_snapshot:
-    print("[litellm_client] Last prompt snapshot:\n", _last_prompt_snapshot)
-else:
-    print("[litellm_client] No prompt captured yet.")
+print("---Litellm script executed---")

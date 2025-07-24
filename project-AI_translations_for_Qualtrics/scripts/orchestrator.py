@@ -12,7 +12,7 @@ Workflow
     b. For each item, consult *canned translations* first, then the
        *translation memory* cache.  Items still lacking a translation
        are bundled and sent to the LLM.
-    c. Update the DataFrame and the cache with new translations.
+    c.  Update the DataFrame and the cache with new translations.
 4.  Optionally run the *fuzzy‑duplicate audit*.
 5.  Persist:
     • filled CSV under ``outputs/translated_csv/``  
@@ -226,7 +226,13 @@ def main(argv: List[str] | None = None):
         )
     build_cell_ids(df)
     canned = load_canned_dict(CANNED_DICT_PATH)
+    print(f"🔍 [DEBUG] Loaded canned keys sample: {list(canned.keys())[:5]}")
+    print(f"🔍 [DEBUG] Translations for “Strongly disagree”: {canned.get('Strongly disagree')}")
     cache = load_cache(CACHE_PATH)
+    # --- Clean cache from empty-string English keys, if any
+    if "" in cache:
+        print("(Found empty-string key in cache. Removing it.)")
+        del cache[""]
     with open(PROMPT_TEMPLATE_PATH, encoding="utf-8") as fh:
         prompt_template = fh.read()
 
@@ -240,7 +246,16 @@ def main(argv: List[str] | None = None):
         if lang not in df.columns:
             df[lang] = ""
 
-        rows_to_translate = df[df[lang].str.strip() == ""]
+        # Only translate rows where target cell is empty AND English source is non-empty
+        rows_to_translate = df[
+            (df[lang].str.strip() == "") & (df[args.en_col].str.strip() != "")
+        ]
+        # Keep count (or debug) of rows skipped because EN is empty
+        empty_en_rows = df[
+            (df[lang].str.strip() == "") & (df[args.en_col].str.strip() == "")
+        ]
+        if len(empty_en_rows):
+            tqdm.write(f"({len(empty_en_rows)} rows skipped for {lang} (EN empty).)")
         if rows_to_translate.empty:
             tqdm.write(f"All items already translated for {lang}. Skipping.")
             continue
@@ -264,9 +279,11 @@ def main(argv: List[str] | None = None):
                 if canned_hit:
                     ready_translations[cid] = canned_hit
 
-            # Step 2: exact cache (English‑keyed)
+            # Step 2: exact cache (English‑keyed) – skip if EN empty
             for cid, eng in cid_to_en.items():
                 if cid in ready_translations:
+                    continue
+                if not eng.strip():
                     continue
                 cached = lookup_exact(eng, lang, cache)
                 if cached:
@@ -276,7 +293,9 @@ def main(argv: List[str] | None = None):
             remaining_items = [
                 (cid, eng)
                 for cid, eng in zip(sub_df["cell_id"], sub_df[args.en_col])
-                if cid not in ready_translations and not detect_image_only(eng)
+                if cid not in ready_translations
+                and eng.strip()                      # ensure EN not empty
+                and not detect_image_only(eng)
             ]
 
             if remaining_items and not args.dry_run:
@@ -292,7 +311,9 @@ def main(argv: List[str] | None = None):
                 ready_translations.update(translated_block)
                 # Update cache with EN‑key mapping
                 en_to_translation = {
-                    cid_to_en[cid]: txt for cid, txt in translated_block.items()
+                    cid_to_en[cid]: txt
+                    for cid, txt in translated_block.items()
+                    if cid_to_en[cid].strip()  # skip empty english keys
                 }
                 update_cache(cache, en_to_translation, lang, CACHE_PATH)
 
@@ -305,7 +326,9 @@ def main(argv: List[str] | None = None):
     output_name = args.input.stem + "_filled.csv"
     out_path = OUTPUT_DIR / output_name
     if not args.dry_run:
-        df.to_csv(out_path, index=False, encoding="utf-8-sig")
+        # Export a copy without the helper column
+        df_to_export = df.drop(columns=["cell_id"]) if "cell_id" in df.columns else df
+        df_to_export.to_csv(out_path, index=False, encoding="utf-8-sig")
         tqdm.write(f"✅ Saved translated file → {out_path}")
 
     # Optionally run audit

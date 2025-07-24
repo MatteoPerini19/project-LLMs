@@ -24,7 +24,7 @@ The project meain goals are to examine how pathogen‑avoidance motivations, sit
 9. Motivation block: nine paired association and importance items plus “immaterial essence” valence question.
 10. Personality and individual‑difference block (TIPI‑10, DPES‑Awe, political orientation, religiosity, paranormal belief scale, attention check).
 11. Demographics (smell ability 0–10, age, gender, occupation, urbanicity, 10‑rung subjective‑status ladder).
-12. End‑of‑survey message.&#x20;
+12. End‑of‑survey message.
 
 ### Critical wording nuances and culturally sensitive terms
 • “Second‑hand” must be rendered unambiguously as previously‑owned apparel, not recycled textiles.
@@ -74,7 +74,7 @@ The JSON object should have exactly this structure:
 {skeleton}
 
 IMPORTANT:
-– Preserve all HTML tags (e.g., bold) and Qualtrics piped-text (e.g. {{e://Field/var}}) that you find the original language, keeping an equivalent position in the translated text.
+– Preserve all HTML tags (e.g., bold), arrow symbols ("➘"), and Qualtrics piped-text (e.g. {{e://Field/var}}) that you find the original language, keeping an equivalent position in the translated text.
 – Keep sentence boundaries and placeholders unchanged.  
 – Always use the informal second-person pronoun in the target language for any participant-facing text or instructions.
 - The texts to translate provided below are generally in sequential order, even if they can belong to different blocks.

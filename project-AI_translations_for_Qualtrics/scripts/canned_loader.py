@@ -83,16 +83,22 @@ def load_canned_dict(
     -------
     dict
         Two-level dictionary ``{english -> {lang_code -> translation}}``.
-        Empty dict if the file is missing or empty.
+        Empty dict if the file is missing or empty.s
 
     Raises
     ------
     ValueError
         If the JSON is malformed or has the wrong structure.
     """
-    p = Path(path)
+    # allow for accidental trailing/leading whitespace in the filename
+    p = Path(str(path).strip())
     if not p.exists():
-        return {}
+        # fallback: maybe the JSON is in `data/input/`
+        alt = p.parent / "input" / p.name
+        if alt.exists():
+            p = alt
+        else:
+            raise FileNotFoundError(f"Canned dictionary not found at: {p.resolve()} (tried fallback at {alt.resolve()})")
 
     try:
         raw = json.loads(p.read_text(encoding="utf-8"))
@@ -107,7 +113,7 @@ def load_canned_dict(
         if not isinstance(bundle, Mapping):
             raise ValueError(f"Value for '{eng}' must be an object, got {type(bundle)}")
         key = normalize_text(eng) if normalize else str(eng)
-        table[key] = {k: str(v) for k, v in bundle.items()}
+        table[key] = {str(k).upper(): str(v) for k, v in bundle.items()}
 
     return table
 

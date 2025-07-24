@@ -1,0 +1,218 @@
+{
+  "Strongly disagree": {
+    "IT": "Totalmente in disaccordo",
+    "PT-BR": "Discordo totalmente",
+    "TR": "Hiç katılmıyorum",
+    "ES-ES": "Totalmente en desacuerdo",
+    "SV": "Håller inte alls med",
+    "NL": "Helemaal oneens"
+  },
+  "Disagree": {
+    "IT": "In disaccordo",
+    "PT-BR": "Discordo",
+    "TR": "Katılmıyorum",
+    "ES-ES": "En desacuerdo",
+    "SV": "Håller inte med",
+    "NL": "Oneens"
+  },
+  "Somewhat disagree": {
+    "IT": "Leggermente in disaccordo",
+    "PT-BR": "Discordo parcialmente",
+    "TR": "Kısmen katılmıyorum",
+    "ES-ES": "Algo en desacuerdo",
+    "SV": "Håller inte riktigt med",
+    "NL": "Eerder oneens"
+  },
+  "Neither agree nor disagree": {
+    "IT": "Né d’accordo né in disaccordo",
+    "PT-BR": "Nem concordo nem discordo",
+    "TR": "Ne katılıyorum ne katılmıyorum",
+    "ES-ES": "Ni de acuerdo ni en desacuerdo",
+    "SV": "Varken håller med eller håller inte med",
+    "NL": "Evenveel mee eens als oneens"
+  },
+  "Somewhat agree": {
+    "IT": "Leggermente d’accordo",
+    "PT-BR": "Concordo parcialmente",
+    "TR": "Kısmen katılıyorum",
+    "ES-ES": "Algo de acuerdo",
+    "SV": "Håller med lite grann",
+    "NL": "Eerder eens"
+  },
+  "Agree": {
+    "IT": "D’accordo",
+    "PT-BR": "Concordo",
+    "TR": "Katılıyorum",
+    "ES-ES": "De acuerdo",
+    "SV": "Håller med",
+    "NL": "Eens"
+  },
+  "Strongly agree": {
+    "IT": "Totalmente d’accordo",
+    "PT-BR": "Concordo totalmente",
+    "TR": "Tamamen katılıyorum",
+    "ES-ES": "Totalmente de acuerdo",
+    "SV": "Håller med fullständigt",
+    "NL": "Helemaal eens"
+  },
+  "0": {
+    "IT": "0",
+    "PT-BR": "0",
+    "TR": "0",
+    "ES-ES": "0",
+    "SV": "0",
+    "NL": "0"
+  },
+  "1": {
+    "IT": "1",
+    "PT-BR": "1",
+    "TR": "1",
+    "ES-ES": "1",
+    "SV": "1",
+    "NL": "1"
+  },
+  "2": {
+    "IT": "2",
+    "PT-BR": "2",
+    "TR": "2",
+    "ES-ES": "2",
+    "SV": "2",
+    "NL": "2"
+  },
+  "3": {
+    "IT": "3",
+    "PT-BR": "3",
+    "TR": "3",
+    "ES-ES": "3",
+    "SV": "3",
+    "NL": "3"
+  },
+  "4": {
+    "IT": "4",
+    "PT-BR": "4",
+    "TR": "4",
+    "ES-ES": "4",
+    "SV": "4",
+    "NL": "4"
+  },
+  "5": {
+    "IT": "5",
+    "PT-BR": "5",
+    "TR": "5",
+    "ES-ES": "5",
+    "SV": "5",
+    "NL": "5"
+  },
+  "6": {
+    "IT": "6",
+    "PT-BR": "6",
+    "TR": "6",
+    "ES-ES": "6",
+    "SV": "6",
+    "NL": "6"
+  },
+  "7": {
+    "IT": "7",
+    "PT-BR": "7",
+    "TR": "7",
+    "ES-ES": "7",
+    "SV": "7",
+    "NL": "7"
+  },
+  "8": {
+    "IT": "8",
+    "PT-BR": "8",
+    "TR": "8",
+    "ES-ES": "8",
+    "SV": "8",
+    "NL": "8"
+  },
+  "9": {
+    "IT": "9",
+    "PT-BR": "9",
+    "TR": "9",
+    "ES-ES": "9",
+    "SV": "9",
+    "NL": "9"
+  },
+  "10": {
+    "IT": "10",
+    "PT-BR": "10",
+    "TR": "10",
+    "ES-ES": "10",
+    "SV": "10",
+    "NL": "10"
+  },
+  "0. Not at all": {
+    "IT": "0. Per nulla",
+    "PT-BR": "0. Nem um pouco",
+    "TR": "0. Hiç",
+    "ES-ES": "0. En absoluto",
+    "SV": "0. Inte alls",
+    "NL": "0. Helemaal niet"
+    },
+  "0. Not important at all": {
+    "IT": "0. Per nulla importante",
+    "PT-BR": "0. Nada importante",
+    "TR": "0. Hiç önemli değil",
+    "ES-ES": "0. Nada importante",
+    "SV": "0. Inte alls viktigt",
+    "NL": "0. Helemaal niet belangrijk"
+    },
+  "6. Very much": {
+    "IT": "6. Moltissimo",
+    "PT-BR": "6. Muitíssimo",
+    "TR": "6. Çok fazla",
+    "ES-ES": "6. Muchísimo",
+    "SV": "6. Väldigt mycket",
+    "NL": "6. Heel erg"
+    },
+  "6. Extremely important": {
+    "IT": "6. Estremamente importante",
+    "PT-BR": "6. Extremamente importante",
+    "TR": "6. Son derece önemli",
+    "ES-ES": "6. Extremadamente importante",
+    "SV": "6. Extremt viktigt",
+    "NL": "6. Uiterst belangrijk"
+    },
+  "Appealing": {
+    "IT": "Attraente",
+    "PT-BR": "Atraente",
+    "TR": "Çekici",
+    "ES-ES": "Atractivo",
+    "SV": "Tilltalande",
+    "NL": "Aantrekkelijk"
+    },
+  "Clean/hygienic": {
+    "IT": "Pulito/igienico",
+    "PT-BR": "Limpo/higiênico",
+    "TR": "Temiz/hijyenik",
+    "ES-ES": "Limpio/higiénico",
+    "SV": "Ren/hygienisk",
+    "NL": "Schoon/hygiënisch"
+    },
+  "I would feel comfortable wearing it, even knowing someone else has worn it": {
+    "IT": "Mi sentirei a mio agio a indossarlo, anche sapendo che qualcun altro l'ha indossato",
+    "PT-BR": "Eu me sentiria confortável em usá-la, mesmo sabendo que outra pessoa já a usou",
+    "TR": "Bir başkasının giymiş olduğunu bilsem bile onu giymekten rahat hissederdim",
+    "ES-ES": "Me sentiría cómodo(a) usándolo, incluso sabiendo que otra persona lo ha usado",
+    "SV": "Jag skulle känna mig bekväm med att bära den, även om jag visste att någon annan hade haft den på sig",
+    "NL": "Ik zou me er prettig bij voelen om het te dragen, zelfs als ik wist dat iemand anders het al had gedragen"
+    },
+  "I would like to have it, even knowing someone else has worn it": {
+    "IT": "Mi piacerebbe averlo, anche sapendo che qualcun altro l'ha indossato",
+    "PT-BR": "Eu gostaria de tê-lo, mesmo sabendo que outra pessoa já o usou",
+    "TR": "Bir başkasının giymiş olduğunu bilsem bile onu sahip olmak isterdim",
+    "ES-ES": "Me gustaría tenerlo, incluso sabiendo que otra persona lo ha usado",
+    "SV": "Jag skulle vilja ha den, även om jag visste att någon annan hade haft den på sig",
+    "NL": "Ik zou het graag willen hebben, zelfs als ik wist dat iemand anders het al had gedragen"
+    },
+  "Percentage price (%)": {
+    "IT": "Prezzo in percentuale (%)",
+    "PT-BR": "Preço percentual (%)",
+    "TR": "Yüzde fiyatı (%)",
+    "ES-ES": "Precio porcentual (%)",
+    "SV": "Procentpris (%)",
+    "NL": "Percentage prijs (%)"
+    }
+}

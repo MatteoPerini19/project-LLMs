@@ -71,6 +71,13 @@ def normalize_whitespace(text: str) -> str:
     return _WHITESPACE_RE.sub(" ", text).strip()
 
 
+def normalize_text(text: str) -> str:
+    """
+    Alias of normalize_whitespace for cross-module canonicalization.
+    """
+    return normalize_whitespace(text)
+
+
 
 _IMG_ONLY_RE = re.compile(r"^\s*<img\b[^>]*>\s*$", re.IGNORECASE | re.DOTALL)
 
@@ -225,6 +232,7 @@ __all__ = [
     "safe_mkdirs",
     "sanitize_json_dict",
     "normalize_whitespace",
+    "normalize_text",
     "detect_image_only",
     "rapidfuzz_ratio",
     "get_timestamp",
